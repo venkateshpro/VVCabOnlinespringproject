@@ -1,47 +1,125 @@
 package com.vvcabs.controller;
 
-import org.springframework.stereotype.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.servlet.ModelAndView;
 import com.vvcabs.Model.Customer;
-import com.vvcabs.Model.loginp;
-import com.vvcabs.service.LoginService;
+import com.vvcabs.Model.cab_Driver;
+import com.vvcabs.repo.customerrepo;
+import com.vvcabs.repo.driverrepo;
 
-import antlr.collections.List;
 
-@Controller
+@RestController
 public class LoginController {
-	
-	LoginService ls;
-	
-	@RequestMapping("/")
-	//@RequestMapping(method = RequestMethod.GET, value = "/login")
-	public String login() {
-		return "login";
-	}
-	@PostMapping("/Login")
-	public String validate_user(@ModelAttribute loginp login) {
-		String email=login.getEmail();
-		String psw= login.getPsw();
-		System.out.println(login.getEmail());
-		System.out.println(login.getPsw());
-		System.out.println(login.getWho());
-		ls.driverlogin(email,psw);
-		
-		
-		 //ls.customerlogin(); 
-		//System.out.println(l);
-		
-		return "";
-	}
+	@Autowired
+	customerrepo cusr;
 	
 
+	@Autowired
+	CustomerController cusc;
 	
+	@Autowired
+	driverrepo drepo;
 	
+	@Autowired
+	driverController dc;
+
+	
+	@Autowired
+	CustomerController cc;
+
+	@GetMapping("/")
+	public ModelAndView login() {
+		ModelAndView modelAndView = new ModelAndView();
+
+		modelAndView.setViewName("login.html");
+		return modelAndView;
+	}
+//	@GetMapping("/homapge")
+//	public ModelAndView homapge() {
+//		ModelAndView modelAndView = new ModelAndView();
+//		
+//		modelAndView.setViewName("Homepage.jsp");
+//		return modelAndView;
+//	}
+
+	@PostMapping(value = "/validate")
+	public ModelAndView validate_customer(@RequestParam(value = "email", required = false) String email,
+			@RequestParam(value = "psw", required = false) String psw,@RequestParam(value = "role", required = false) String role) {
+
+		Customer cus = cusr.findByEmailAndPassword(email, psw);
+		cab_Driver d= drepo.findByEmailAndPassword(email, psw);
+		//System.out.println(cus.getUser_email());
+		String ch;
+		
+			ch=role;
+			switch(ch) {
+			case "customer":
+				//System.out.println("iam in cus");
+				if (cus != null) {
+					String cus_name=cus.getUser_name();
+					int cus_id=cus.getUser_Id();
+
+					System.out.println(cus_name);
+					
+					ModelAndView modelAndView = new ModelAndView();
+					modelAndView.addObject("name", cus_name);
+					modelAndView.addObject("id", cus_id);
+
+					modelAndView.setViewName("Homepage.jsp");
+					return modelAndView;
+					
+					
+				}
+				else { 
+					ModelAndView modelAndView = new ModelAndView("alertfails.html");
+
+					//modelAndView.setViewName("alertfails.html");
+					return modelAndView
+;
+				}	
+			case "driver":
+				if (d != null) {
+					ModelAndView modelAndView = new ModelAndView();
+					String name=d.getDriver_name();
+					int d_Id=d.getD_Id();
+					int cno=d.getCab_no();
+					//dc.cabnoid(d_Id,cno);
+					
+					modelAndView.setViewName("Driver.jsp");
+					modelAndView.addObject("name", name);
+
+					return modelAndView;
+
+					
+				}
+				else { 
+					ModelAndView modelAndView = new ModelAndView();
+
+					modelAndView.setViewName("alertfails.html");
+				}
+			case "admin":
+				System.out.println("iam in admin");
+				if (cus != null) {
+//					ModelAndView modelAndView = new ModelAndView();
+//
+//					modelAndView.setViewName("admin");
+					//return "scuss";
+				}
+				else {
+					//return "redirect:/alertfails.html";
+				}
+			}
+			return null;
+			
+		
+		
+
+
+	}
 
 }

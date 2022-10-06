@@ -1,8 +1,8 @@
-<!DOCTYPE html>
- 
- 		
- 		
-<html xmlns:th="http://www.thymeleaf.org">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+  <%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<html>
 <head>
 <style>
 #customers {
@@ -28,9 +28,10 @@
   color: white;
 }
 </style>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 </head>
 <body>
-
 <h1>List of Users  </h1>
 
 <table id="customers">
@@ -41,16 +42,19 @@
     <th>User PhoneNum</th>
     <th>User Name</th>
   </tr>
-  
-    <tr th:each="c : ${customers}">
-              <td th:text="${c.user_Id}"></td>
-              <td th:text="${product.user_name}"></td>
-              <td th:text="${product.description}"></td>
-            </tr>
-  
+  <tbody>
+	  <c:forEach items="${listUsers}" var="u">
+	         <tr>
+	                        <td>${u.user_Id}</td>
+	                        <td>${u.user_email}</td>
+	                        <td>${u.user_psw}</td>
+	                        <td>${u.user_phone}</td>
+	                        <td>${u.user_name}</td>
+	                        
+	                    </tr>
+	  </c:forEach>
+  </tbody>
 </table>
 
 </body>
 </html>
-
-

@@ -1,0 +1,130 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Roboto:700?family=Playfair+Display:ital,wght@1,500&display=swap);
+
+.navbar-image {
+    height: 6vh;
+    margin-left: 20px;
+    
+}
+.span-1{
+	
+	color: black;
+	
+}
+.bg-container{
+    background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("MAP\ \(2\).jpg");
+    height: 100vh;
+    width: 100%;
+}
+.vr-home-heading {
+    color: rgb(234, 168, 0);
+    font-size: 60px;
+    font-family: "Roboto" ;
+    margin-left: 20px;
+    margin-top: 20px;
+
+}
+#card {
+    background: #fbfbfb;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;    height: 450px;
+    width: 400px;
+    margin-top: 3.5rem;
+    margin-left: 6rem;
+  }
+  #card-content {
+    padding: 12px 44px;
+  }
+  #card-title {
+    font-family: "Raleway Thin", sans-serif;
+    letter-spacing: 2px;
+    padding-bottom: 3px;
+    padding-top: 13px;
+    text-align: center;
+  }
+  #signup {
+    color: rgb(234, 168, 0);
+    font-family: "Raleway", sans-serif;
+    font-size: 20pt;
+    margin-top: 16px;
+    text-align: center;
+  }
+  #submit-btn {
+    background: -webkit-linear-gradient(right, #f7e07b, rgb(234, 168, 0));
+    border: none;
+    border-radius: 21px;
+    box-shadow: 0px 1px 8px rgb(234, 168, 0);
+    cursor: pointer;
+    color: white;
+    font-family: "Raleway SemiBold", sans-serif;
+    height: 42.3px;
+    margin: 0 auto;
+    margin-top: 50px;
+    transition: 0.25s;
+    width: 153px;
+  }
+  #submit-btn:hover {
+    box-shadow: 0px 1px 18px rgb(234, 168, 0);
+    background: -webkit-linear-gradient(right, #fafaf9, rgb(246, 245, 243));
+
+    background-color: white;
+    color: rgb(234, 168, 0);
+
+  }
+  .form {
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+  }
+  .form-border {
+    background: -webkit-linear-gradient(right, rgb(234, 168, 0), rgb(234, 168, 0));
+    height: 1px;
+    width: 100%;
+  }
+  .form-content {
+    background: #fbfbfb;
+    border: none;
+    outline: none;
+    padding-top: 8px;
+  }
+  .underline-title {
+    background: -webkit-linear-gradient(right, rgb(234, 168, 0), rgb(234, 168, 0));
+    height: 2px;
+    margin: -1.1rem auto 0 auto;
+    width: 140px;
+  }
+  
+@media screen and (max-width:520px){
+    #card{
+        transform: scale(0.9);
+        margin-left: 10%;
+
+    }
+    .vr-home-heading{
+        font-size: 20px;
+    }
+
+}
+@media screen and (max-width:450px){
+    #card{
+        transform: scale(0.8);
+        margin-left: 4%;
+        margin-top: 0;
+
+    }
+    .vr-home-heading{
+        font-size: 30px;
+    }
+
+}
+
+@media screen and (max-width:390px){
+    #card{
+        transform: scale(0.7);
+        margin-left: -2%;
+        margin-top: 0;
+
+    }
+
+}

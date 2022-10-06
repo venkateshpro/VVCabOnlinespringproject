@@ -2,62 +2,95 @@ package com.vvcabs.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.vvcabs.Model.Customer;
-import com.vvcabs.repo.customerrepo;
+import com.vvcabs.Model.booking;
+import com.vvcabs.Model.request;
 import com.vvcabs.service.customerService;
 
-@Controller
+@RestController
 public class CustomerController {
-	
-	customerrepo cusr;
-	
+
+	@Autowired
+	driverController dc;
 	@Autowired
 	private customerService cusservice;
-	
+
 	@GetMapping("/newuser")
-	public String userform() {
-		return "Registration_user";
+	public ModelAndView userform() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("Registration_user.jsp");
+		return modelAndView;
 	}
-	
+
 	@PostMapping("/adduser")
-	    public String addProduct(@ModelAttribute Customer customer) {
-		
-			cusservice.savecustomer(customer);
-	        return "alertsuc";
-	    }
-	 
-	@GetMapping("/listofcus")
-	public ModelAndView findlistofcus(){
-		
-		List<Customer> l= new ArrayList<>();
-		l.addAll(cusservice.get_customer());
+	public ModelAndView addProduct(@ModelAttribute Customer customer) {
+		String email = customer.getUser_email();
+		String psw = customer.getUser_psw();
+		String phone = customer.getUser_phone();
+		String name = customer.getUser_name();
+		System.out.println("email" + "  " + "psw" + " " + "phone" + " " + "name");
+		System.out.println(email + " " + psw + "  " + phone + " " + name);
 
-		ModelAndView mv= new ModelAndView();
-		
-		mv.addObject(l);
-		mv.setViewName("ListofUsers");
-		 
-		 System.out.println(mv);
-		return mv;
+		cusservice.savecustomer(customer);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("alertsuc.jsp");
+		return modelAndView;
 	}
-//	@RequestMapping("/d")
-//	public void ep(@ModelAttribute Customer cus,Model m) {
-//		
-//		
-//		System.out.println(cusr.findByEmailAndPass(cus.getUser_email(),cus.getUser_psw() ));;
-//	}
-	
 
+	@GetMapping("/listcus")
+	public ModelAndView showlistcus() {
+		ModelAndView mview = new ModelAndView();
+		List<Customer> l = new ArrayList<>();
+		l.addAll(cusservice.get_customer());
+		mview.addObject("listUsers", l);
+		mview.setViewName("list_of_u.jsp");
+		System.out.println(l);
+
+		return mview;
+
+	}
+
+	@PostMapping("/requestcab") // this method collecting directios
+	public ModelAndView requestCab(@ModelAttribute request req) {
+		if (cusservice.get_customer().isEmpty()) {
+			System.out.println("noo cabs are available At this time ");
+		} else {
+			cusservice.saverequest(req);
+			String pick = req.getPickup_location();
+			String drop = req.getDrop_location();
+
+			ModelAndView modelAndView = new ModelAndView();
+			modelAndView.setViewName("reqestsuccess.jsp");
+			return modelAndView;
+
+		}
+		return null;
+
+	}
+
+	@GetMapping("/recentbooking")
+	public ModelAndView recentbooking() {
+		ModelAndView mview = new ModelAndView();
+
+		int c_id = dc.cus_id;
+		System.out.println(c_id + "cus");
+
+		List<booking> bl = new ArrayList<>();
+		bl.addAll(cusservice.recentbookings(c_id));
+		mview.addObject("recentbooking", bl);
+		mview.setViewName("list_of_recent_booking.jsp");
+
+		System.out.println(bl);
+
+		return mview;
+
+	}
 }

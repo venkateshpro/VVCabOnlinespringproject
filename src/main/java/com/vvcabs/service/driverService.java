@@ -1,14 +1,14 @@
 package com.vvcabs.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
-
-import com.vvcabs.Model.Customer;
 import com.vvcabs.Model.cab_Driver;
 import com.vvcabs.repo.driverrepo;
+
+
+
+
 @Service
 public class driverService {
 	
@@ -21,7 +21,7 @@ public class driverService {
 		
 	}
 	
-	public List <cab_Driver> get_driverlist() {
+	public List<cab_Driver>  get_driverlist() {
 		return drepo.findAll();
 		
 	}

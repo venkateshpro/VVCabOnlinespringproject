@@ -1,18 +1,19 @@
 package com.vvcabs.Model;
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 
 @Entity
@@ -22,6 +23,8 @@ public class Customer {
 	
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		@Column(name = "user_id")
+	
 	 	int user_Id;
 		@Column
 		String user_email;
@@ -31,6 +34,13 @@ public class Customer {
 		String user_phone;
 		@Column
 		String user_name;
+		
+		@OneToMany(mappedBy = "customer")
+		private List<request> request;
+		
+		@OneToMany(mappedBy = "customer")
+		private List<booking> booking;
+		
 		public Customer() {
 			// TODO Auto-generated constructor stub
 		}

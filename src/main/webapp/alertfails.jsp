@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="utf-8">
+<meta charset="ISO-8859-1">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Bootstrap Simple Success Confirmation Popup</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
@@ -70,7 +72,7 @@
             height: 95px;
             border-radius: 50%;
             z-index: 9;
-            background: #82ce34;
+            background: #fa3628;
             padding: 15px;
             text-align: center;
             box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
@@ -89,7 +91,7 @@
         .modal-confirm .btn {
             color: #fff;
             border-radius: 4px;
-            background: #82ce34;
+            background: #fa3628;
             text-decoration: none;
             transition: all 0.4s;
             line-height: normal;
@@ -98,7 +100,7 @@
 
         .modal-confirm .btn:hover,
         .modal-confirm .btn:focus {
-            background: #6fb32b;
+            background: #fa3628;
             outline: none;
         }
 
@@ -106,31 +108,32 @@
             display: inline-block;
             margin: 100px auto;
         }
+        .btnok{
+        	width: 40vh;
+        }
     </style>
-</head>
 
+</head>
 <body>
-    <div id="myModal">
+<div id="myModal">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="icon-box">
                         <i class="material-icons">&#xE876;</i>
                     </div>
-                    <h4 class="modal-title w-100">Awesome!</h4>
+                    <h4 class="modal-title w-100">HOHoHO!</h4>
                 </div>
                 <div class="modal-body">
-                    <p class="text-center">Your Registration has been Successfull..</p>
+                    <p class="text-center">Plz check your Login Credentails..</p>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                   <a href="login.html"> <button class="btn btn-danger btn-block btnok"  data-dismiss="modal">OK</button></a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal HTML -->
 
 </body>
-
 </html>

@@ -1,10 +1,14 @@
 package com.vvcabs.Model;
 
+
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -16,6 +20,9 @@ public class cab_Driver {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int d_Id;
+	
+	@OneToMany(mappedBy = "driver")
+	private List<booking> booking;
 	
 	@Column
 	private String email;
@@ -30,6 +37,8 @@ public class cab_Driver {
 	
 	@Column
 	String driver_phonenum;
+	
+	
 
 	public cab_Driver() {
 		super();

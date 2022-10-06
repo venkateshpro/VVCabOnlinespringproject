@@ -1,23 +1,38 @@
 package com.vvcabs.service;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vvcabs.Model.Customer;
-import com.vvcabs.Model.cab_Driver;
+import com.vvcabs.Model.booking;
+import com.vvcabs.Model.request;
+import com.vvcabs.repo.bookingrepo;
 import com.vvcabs.repo.customerrepo;
+import com.vvcabs.repo.requestrepo;
 
 @Service
 public class customerService {
 	
 	@Autowired
-	private customerrepo cusrepo;
-	
+	customerrepo cusrepo;
+	@Autowired
+	bookingrepo brepo;
+	@Autowired
+	requestrepo reqrepo;
 	
 	public Customer savecustomer(Customer customer) {
+		
 	   return cusrepo.save(customer);
+	   
+	}
+	
+	public request saverequest(request req) {
+		
+		return reqrepo.save(req);
 	}
 	
 	
@@ -29,4 +44,14 @@ public class customerService {
 		
 		return cusrepo.findById(user_Id).orElse(null);
 	}
+
+	public List<booking>  recentbookings(int cus_id) {
+		
+		return brepo.findByCustomerBooking(cus_id);
+		
+		
+	}
+	
+	
+	
 }
