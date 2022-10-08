@@ -1,8 +1,6 @@
 package com.vvcabs.service;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

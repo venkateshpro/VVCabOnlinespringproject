@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+    <link rel="stylesheet" href="CabbookingHome.css">
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -44,6 +45,10 @@
 
 
 <body>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark justify-content-between">
+        <img src=" https://res.cloudinary.com/dkzionr3v/image/upload/v1643985271/v_logo_png_ezwvk6.png"  class="navbar-image "/>
+        <a href="Driver.jsp"><button class="btn btn-warning m-2">Back</button></a>
+    </nav>
 	<h1>List of Users</h1>
 
 	<table id="customers">
@@ -51,7 +56,6 @@
 			<th>Request Id</th>
 			<th>UserId</th>
 			<th>User Name</th>
-
 			<th>Pickup Location</th>
 			<th>Drop Location</th>
 			<th>Action</th>
@@ -64,6 +68,7 @@
 					<td>${r.customer.user_name}
 					<td>${r.pickup_location}</td>
 					<td>${r.drop_location}</td>
+					
 					<td>
 						<button type="button" class="btn btn-success ml-2"
 							data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -85,11 +90,11 @@
 											<p >Drop Point :   <b>${r.drop_location}</b></p>
 											
 											<input type="text" name="price" />
-											<input type="hidden" name="customer.user_Id" value="${r.customer.user_Id}"/>
-											
+											<!--  input type="hidden" name="customer.user_Id" value="${r.customer.user_Id}"/>
+											<input type="hidden" name="cus_name" value="${r.customer.user_name}"/>
 											<input type="hidden" name="req_id" value="${r.r_Id}"/>
 											<input type="hidden" name="pickup_location" value="${r.pickup_location}"/>
-											<input type="hidden" name="drop_location" value="${r.drop_location}"/>
+											<input type="hidden" name="drop_location" value="${r.drop_location}"/>-->
 											
 
 										</div>

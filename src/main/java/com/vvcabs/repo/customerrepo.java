@@ -1,7 +1,5 @@
 package com.vvcabs.repo;
 
-import java.util.Collection;
-import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,9 +18,3 @@ public interface customerrepo  extends JpaRepository <Customer,Integer> {
 
 
 
-//public static final String email_psw = "select * from customer c where c.user_email=?1 and c.user_psw=?2";
-//@Query(value="select count(*) from Customer s where s.user_email=?1 and s. user_psw=?2", nativeQuery = true)
-//int verifyCredentails(String email,String psw);
-//
-//@Query(value = email_psw, nativeQuery = true)
-//Customer findemailpsw(String email, String psw);

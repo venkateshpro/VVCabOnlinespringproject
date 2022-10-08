@@ -17,7 +17,10 @@
 <body>
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark justify-content-between">
         <img src=" https://res.cloudinary.com/dkzionr3v/image/upload/v1643985271/v_logo_png_ezwvk6.png"  class="navbar-image "/>
+        <div>
         <a href="/recentbooking"><button class="btn btn-warning m-2">recent requests</button></a>
+         <a href="Login.jsp"><button class="btn btn-warning m-2">Logout</button></a>
+        </div>
     </nav>
     <div class="bg-container">
         <div>
@@ -45,6 +48,7 @@
                 <input id="submit-btn" type="submit" name="submit" value="---Go---" />
               </form>
             </div>
+         </div>
     </div>
     
 

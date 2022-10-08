@@ -24,8 +24,8 @@ public class Customer {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		@Column(name = "user_id")
-	
 	 	int user_Id;
+		
 		@Column
 		String user_email;
 		@Column
@@ -40,6 +40,9 @@ public class Customer {
 		
 		@OneToMany(mappedBy = "customer")
 		private List<booking> booking;
+		
+//		@ManyToMany(mappedBy = "customer1")
+//		private List<booking> booking1;
 		
 		public Customer() {
 			// TODO Auto-generated constructor stub

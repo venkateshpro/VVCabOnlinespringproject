@@ -2,7 +2,6 @@ package com.vvcabs.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,10 +17,18 @@ import com.vvcabs.service.customerService;
 @RestController
 public class CustomerController {
 
-	@Autowired
-	driverController dc;
+	String pick;
+	String drop;
+	int r_id;
+	int cus_id;
+	String cus_name;
+	
+	
 	@Autowired
 	private customerService cusservice;
+	
+	@Autowired
+	private LoginController lc;
 
 	@GetMapping("/newuser")
 	public ModelAndView userform() {
@@ -64,8 +71,14 @@ public class CustomerController {
 			System.out.println("noo cabs are available At this time ");
 		} else {
 			cusservice.saverequest(req);
-			String pick = req.getPickup_location();
-			String drop = req.getDrop_location();
+			 pick = req.getPickup_location();
+			 drop = req.getDrop_location();
+			 r_id=req.getR_Id();
+			 cus_id=req.getCustomer().getUser_Id();
+			 cus_name=req.getCustomer().getUser_name();
+			
+			
+			
 
 			ModelAndView modelAndView = new ModelAndView();
 			modelAndView.setViewName("reqestsuccess.jsp");
@@ -80,7 +93,7 @@ public class CustomerController {
 	public ModelAndView recentbooking() {
 		ModelAndView mview = new ModelAndView();
 
-		int c_id = dc.cus_id;
+		int c_id = lc.cus_id;
 		System.out.println(c_id + "cus");
 
 		List<booking> bl = new ArrayList<>();

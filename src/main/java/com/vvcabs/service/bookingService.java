@@ -1,10 +1,11 @@
 package com.vvcabs.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vvcabs.Model.booking;
-import com.vvcabs.controller.driverController;
 import com.vvcabs.repo.bookingrepo;
 
 @Service
@@ -12,14 +13,19 @@ public class bookingService {
 	@Autowired
 	bookingrepo brepo;
 
-	public booking booking(booking bk) {
-		// TODO Auto-generated method stub
+	public void booking(String pick, String drop, int r_id, int cus_id, String cus_name, int price,int dri_id) {
+		brepo.insertBooking(pick, drop, r_id, cus_id, cus_name, dri_id, price);
 		
-		return brepo.save(bk);
+	}
+	
+	public List<booking> bookinglist() {
 		
+		return brepo.findAll();
 	}
 
 	
+
+
 
 	
 	

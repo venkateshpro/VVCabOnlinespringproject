@@ -28,13 +28,7 @@ public class requestservice {
 		
 	}
 	
-//	public request deletebyid() {
-//		return reqrepo.deleteById();;
-//		
-//	}
-//	public void update() {
-//		reqrepo.findById();
-//	}
+
 	
 	
 	

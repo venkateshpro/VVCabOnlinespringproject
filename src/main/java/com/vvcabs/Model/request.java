@@ -1,7 +1,6 @@
 package com.vvcabs.Model;
 
 
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,9 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
 import org.springframework.stereotype.Component;
 
 
@@ -24,10 +20,12 @@ public class request {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
  	int r_Id;
 	
+	
+	
 	@ManyToOne
 	private Customer customer;
 	
-
+	
 	@Column
 	String pickup_location;
 	@Column
@@ -36,14 +34,10 @@ public class request {
 	@Column
 	int status=0;
 	
-	
-//	@OneToOne(mappedBy = "request")
-//	private List<booking> booking;
-	
 	public request() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
+	
 
 	public int getR_Id() {
 		return r_Id;

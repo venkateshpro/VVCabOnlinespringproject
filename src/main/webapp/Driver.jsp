@@ -40,14 +40,21 @@
 .para{
     color: aliceblue;
 }
+.span-1{
+	color:black;
+}
 </style>
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg bg-dark justify-content-between">
         <img src=" https://res.cloudinary.com/dkzionr3v/image/upload/v1643985271/v_logo_png_ezwvk6.png"  class="navbar-image "/>
+        
         <a class="navbar-brand"><span class="ml-4 mt-4"style='font-size:25px; '>&#128525;</span>${name}</a>
+         <a href="Login.jsp"><button class="btn btn-warning m-2">Logout</button></a>
+        
+       
     </nav>
-    <h1 class="ad-home-heading ">Welcome To <span class="span-1">Manager Service</span></h1>
+    <h1 class="ad-home-heading ">Welcome  <span class="span-1">${name}</span></h1>
     <div class=" menu d-flex flex-column">
         <!-- <button class=" btnn btn btn-warning ">requsts by user </button> -->
         <!-- Button trigger modal -->
@@ -64,7 +71,7 @@
         <button class="btnn btn btn-warning "> bookings</button> -->
    </div>
    <nav class="navbar navbar-dark navbar-expand-lg bg-dark justify-content-between">
-    <p class="para">..................cwemciewhviknevewn vken kw </p>
+    <p class="para"></p>
 </nav>
 
 </body>

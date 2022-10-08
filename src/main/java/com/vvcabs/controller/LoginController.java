@@ -15,37 +15,32 @@ import com.vvcabs.repo.driverrepo;
 
 @RestController
 public class LoginController {
+	
+	int cus_id;
+	
+	int dri_id;
+	
+	String cus_name;
+	
 	@Autowired
 	customerrepo cusr;
 	
 
-	@Autowired
-	CustomerController cusc;
+
 	
 	@Autowired
 	driverrepo drepo;
 	
-	@Autowired
-	driverController dc;
 
-	
-	@Autowired
-	CustomerController cc;
 
 	@GetMapping("/")
 	public ModelAndView login() {
 		ModelAndView modelAndView = new ModelAndView();
 
-		modelAndView.setViewName("login.html");
+		modelAndView.setViewName("Login.jsp");
 		return modelAndView;
 	}
-//	@GetMapping("/homapge")
-//	public ModelAndView homapge() {
-//		ModelAndView modelAndView = new ModelAndView();
-//		
-//		modelAndView.setViewName("Homepage.jsp");
-//		return modelAndView;
-//	}
+
 
 	@PostMapping(value = "/validate")
 	public ModelAndView validate_customer(@RequestParam(value = "email", required = false) String email,
@@ -53,17 +48,14 @@ public class LoginController {
 
 		Customer cus = cusr.findByEmailAndPassword(email, psw);
 		cab_Driver d= drepo.findByEmailAndPassword(email, psw);
-		//System.out.println(cus.getUser_email());
 		String ch;
 		
 			ch=role;
 			switch(ch) {
 			case "customer":
-				//System.out.println("iam in cus");
 				if (cus != null) {
-					String cus_name=cus.getUser_name();
-					int cus_id=cus.getUser_Id();
-
+					cus_id=cus.getUser_Id();
+					cus_name=cus.getUser_name();
 					System.out.println(cus_name);
 					
 					ModelAndView modelAndView = new ModelAndView();
@@ -86,8 +78,8 @@ public class LoginController {
 				if (d != null) {
 					ModelAndView modelAndView = new ModelAndView();
 					String name=d.getDriver_name();
-					int d_Id=d.getD_Id();
-					int cno=d.getCab_no();
+					dri_id=d.getD_Id();
+					//int cno=d.getCab_no();
 					//dc.cabnoid(d_Id,cno);
 					
 					modelAndView.setViewName("Driver.jsp");
@@ -105,13 +97,14 @@ public class LoginController {
 			case "admin":
 				System.out.println("iam in admin");
 				if (cus != null) {
-//					ModelAndView modelAndView = new ModelAndView();
-//
-//					modelAndView.setViewName("admin");
-					//return "scuss";
+					ModelAndView modelAndView = new ModelAndView();
+
+					modelAndView.setViewName("Admin.jsp");
+					return modelAndView;
 				}
 				else {
-					//return "redirect:/alertfails.html";
+					ModelAndView modelAndView = new ModelAndView();
+					modelAndView.setViewName("alertfails.html");
 				}
 			}
 			return null;
