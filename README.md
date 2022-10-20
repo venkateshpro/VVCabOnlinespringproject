@@ -50,7 +50,7 @@ Admin has the entire access admin can view the list of bookings ,  add customer,
   - Push the changes in your local repository to GitHub.
     - git push origin `<selected branch>`
   - use git clone to clone your repository to local machine
-    - git clone https://github.com/YOUR-USERNAME/Restaurant-Management
+    - git clone https://github.com/venkateshpro/VVCabOnlinespringproject.git
 
 ## Usage
   - open website and login based on role
