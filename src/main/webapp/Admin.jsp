@@ -53,7 +53,7 @@
     </nav>
     <h1 class="ad-home-heading ">Welcome <span class="span-1">Venkatesh </span></h1>
     <div class=" menu d-flex flex-column">
-        <a href="/newcab"><button onclick="/newcab"  class=" btnn btn btn-warning ">Add Cabs </button></a>
+        <a href="/newcab"><button  class=" btnn btn btn-warning ">Add Cabs </button></a>
         <a href="/newuser"><button class="btnn btn btn-warning ">Add Customer</button></a>
         <a href="/listofdriver"><button class="btnn btn btn-warning "> listof cabs</button></a>
         <a href="/listcus"><button class="btnn btn btn-warning ">listof customers</button></a>

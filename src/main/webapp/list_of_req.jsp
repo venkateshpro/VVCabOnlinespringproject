@@ -69,6 +69,7 @@
 					<td>${r.pickup_location}</td>
 					<td>${r.drop_location}</td>
 					
+					
 					<td>
 						<button type="button" class="btn btn-success ml-2"
 							data-bs-toggle="modal" data-bs-target="#exampleModal">

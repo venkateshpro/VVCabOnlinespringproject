@@ -22,7 +22,7 @@
             <a href="Registration_user.jsp"><img src="https://cdn-icons-png.flaticon.com/512/6728/6728113.png" class="pen"/></a>
             <div class="detail-form">
                 <p class="sign" align="center">Sign in</p>
-                <form class="form1" action="validate" method="post">
+                <form class="form1" action="/validate" method="post">
                     <select class="select" name="role">
                         <option value="customer" class="p_select">Customer</option>
                         <option value="driver" class="p_select">Driver</option>

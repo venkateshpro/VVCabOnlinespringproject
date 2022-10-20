@@ -2,15 +2,12 @@ package com.vvcabs.Model;
 
 
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
@@ -169,13 +166,6 @@ public class booking {
 
 
 
-	@Override
-	public String toString() {
-		return "booking [b_Id=" + b_Id + ", r_Id=" + r_Id + ", customer=" + customer + ", driver=" + driver
-				+ ", cus_name=" + cus_name + ", pickup_location=" + pickup_location + ", drop_location=" + drop_location
-				+ ", price=" + price + "]";
-	}
-	
 
 
 

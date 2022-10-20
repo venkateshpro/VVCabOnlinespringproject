@@ -3,6 +3,8 @@ package com.vvcabs.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,6 +26,9 @@ public class CustomerController {
 	String cus_name;
 	
 	
+	Logger logger=LoggerFactory.getLogger(CustomerController.class);
+
+
 	@Autowired
 	private customerService cusservice;
 	
@@ -34,8 +39,11 @@ public class CustomerController {
 	public ModelAndView userform() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("Registration_user.jsp");
+		logger.info("Customer Registration");
+		
+		
 		return modelAndView;
-	}
+	} 
 
 	@PostMapping("/adduser")
 	public ModelAndView addProduct(@ModelAttribute Customer customer) {
@@ -49,6 +57,8 @@ public class CustomerController {
 		cusservice.savecustomer(customer);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("alertsuc.jsp");
+		logger.info("Customer Added Sucessfully");
+
 		return modelAndView;
 	}
 
@@ -60,6 +70,7 @@ public class CustomerController {
 		mview.addObject("listUsers", l);
 		mview.setViewName("list_of_u.jsp");
 		System.out.println(l);
+		logger.info("List of Customers Has displyed ");
 
 		return mview;
 
@@ -68,7 +79,9 @@ public class CustomerController {
 	@PostMapping("/requestcab") // this method collecting directios
 	public ModelAndView requestCab(@ModelAttribute request req) {
 		if (cusservice.get_customer().isEmpty()) {
-			System.out.println("noo cabs are available At this time ");
+		
+			logger.error("noo cabs are available At this time ");
+
 		} else {
 			cusservice.saverequest(req);
 			 pick = req.getPickup_location();
@@ -81,6 +94,7 @@ public class CustomerController {
 			
 
 			ModelAndView modelAndView = new ModelAndView();
+			logger.info("Plz Select the Cab And Intaite Booking");
 			modelAndView.setViewName("reqestsuccess.jsp");
 			return modelAndView;
 
@@ -92,6 +106,7 @@ public class CustomerController {
 	@GetMapping("/recentbooking")
 	public ModelAndView recentbooking() {
 		ModelAndView mview = new ModelAndView();
+		logger.info("List of Booking Intiated By the User");
 
 		int c_id = lc.cus_id;
 		System.out.println(c_id + "cus");

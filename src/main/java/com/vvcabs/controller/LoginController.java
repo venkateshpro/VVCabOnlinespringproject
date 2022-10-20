@@ -1,6 +1,8 @@
 package com.vvcabs.controller;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,16 +33,18 @@ public class LoginController {
 	@Autowired
 	driverrepo drepo;
 	
-
+	Logger logger=LoggerFactory.getLogger(LoginController.class);
 
 	@GetMapping("/")
 	public ModelAndView login() {
 		ModelAndView modelAndView = new ModelAndView();
 
 		modelAndView.setViewName("Login.jsp");
+		logger.info("Login Page strted");
 		return modelAndView;
 	}
 
+	
 
 	@PostMapping(value = "/validate")
 	public ModelAndView validate_customer(@RequestParam(value = "email", required = false) String email,
@@ -54,22 +58,21 @@ public class LoginController {
 			switch(ch) {
 			case "customer":
 				if (cus != null) {
+					logger.info("Validation Sccuessfully Done");
 					cus_id=cus.getUser_Id();
-					cus_name=cus.getUser_name();
-					System.out.println(cus_name);
-					
+					cus_name=cus.getUser_name();					
 					ModelAndView modelAndView = new ModelAndView();
 					modelAndView.addObject("name", cus_name);
 					modelAndView.addObject("id", cus_id);
-
 					modelAndView.setViewName("Homepage.jsp");
+					logger.info("customer Name"+" "+cus_name +" "+"Customer Page Displyed");
 					return modelAndView;
 					
 					
 				}
 				else { 
-					ModelAndView modelAndView = new ModelAndView("alertfails.html");
-
+					ModelAndView modelAndView = new ModelAndView("alertfails.jsp");
+					logger.error("You Entered Wrong Credentails Please Check");
 					//modelAndView.setViewName("alertfails.html");
 					return modelAndView
 ;
@@ -77,6 +80,7 @@ public class LoginController {
 			case "driver":
 				if (d != null) {
 					ModelAndView modelAndView = new ModelAndView();
+					logger.info("Driver Page Started");
 					String name=d.getDriver_name();
 					dri_id=d.getD_Id();
 					//int cno=d.getCab_no();
@@ -84,27 +88,33 @@ public class LoginController {
 					
 					modelAndView.setViewName("Driver.jsp");
 					modelAndView.addObject("name", name);
-
+					logger.info("Driver Name"+" "+name +" "+"Driver Page Displyed");
 					return modelAndView;
 
 					
 				}
 				else { 
 					ModelAndView modelAndView = new ModelAndView();
+					logger.error("You Entered Wrong Credentails Please Check");
 
-					modelAndView.setViewName("alertfails.html");
+					modelAndView.setViewName("alertfails.jsp");
 				}
 			case "admin":
-				System.out.println("iam in admin");
+				logger.info("Admin Page Started");
+
 				if (cus != null) {
 					ModelAndView modelAndView = new ModelAndView();
 
 					modelAndView.setViewName("Admin.jsp");
+					logger.info("Driver Name"+" "+"Admin" +" "+"Driver Page Displyed");
+
 					return modelAndView;
 				}
 				else {
 					ModelAndView modelAndView = new ModelAndView();
-					modelAndView.setViewName("alertfails.html");
+					logger.error("You Entered Wrong Credentails Please Check");
+
+					modelAndView.setViewName("alertfails.jsp");
 				}
 			}
 			return null;

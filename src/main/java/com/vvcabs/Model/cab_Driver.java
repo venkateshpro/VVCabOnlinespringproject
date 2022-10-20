@@ -113,12 +113,7 @@ public class cab_Driver {
 		this.driver_phonenum = driver_phonenum;
 	}
 
-	@Override
-	public String toString() {
-		return "cab_Driver [d_Id=" + d_Id + ", email=" + email + ", psw=" + psw + ", driver_name=" + driver_name
-				+ ", cab_no=" + cab_no + ", cab_type=" + cab_type + ", driver_phonenum=" + driver_phonenum + "]";
-	}
-	
+
 	
 	
 

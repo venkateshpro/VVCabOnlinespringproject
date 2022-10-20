@@ -3,6 +3,8 @@ package com.vvcabs.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +19,8 @@ public class bookingController {
 	@Autowired
 	bookingService bs;
 	
-	
+	Logger logger=LoggerFactory.getLogger(LoginController.class);
+
 	@GetMapping("/bookinglist")
 	public ModelAndView recentbooking() {
 		ModelAndView mview = new ModelAndView();
@@ -27,7 +30,7 @@ public class bookingController {
 		mview.addObject("booking", bl);
 		mview.setViewName("list_of_booking.jsp");
 
-		System.out.println(bl);
+		logger.info("List Of Booking");
 
 		return mview;
 

@@ -41,8 +41,7 @@ public class Customer {
 		@OneToMany(mappedBy = "customer")
 		private List<booking> booking;
 		
-//		@ManyToMany(mappedBy = "customer1")
-//		private List<booking> booking1;
+
 		
 		public Customer() {
 			// TODO Auto-generated constructor stub
@@ -85,11 +84,5 @@ public class Customer {
 		public void setUser_name(String user_name) {
 			this.user_name = user_name;
 		}
-		@Override
-		public String toString() {
-			return "Customer [user_Id=" + user_Id + ", user_email=" + user_email + ", user_psw=" + user_psw
-					+ ", user_phone=" + user_phone + ", user_name=" + user_name + "]";
-		}
-		
-		
+	
 }

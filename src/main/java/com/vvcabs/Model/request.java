@@ -34,6 +34,7 @@ public class request {
 	@Column
 	int status=0;
 	
+	
 	public request() {
 		super();
 	}
@@ -64,12 +65,7 @@ public class request {
 		this.drop_location = drop_location;
 	}
 	
-	@Override
-	public String toString() {
-		return "request [r_Id=" + r_Id + ", customer=" + customer + ", pickup_location=" + pickup_location
-				+ ", drop_location=" + drop_location + ", status=" + status + "]";
-	}
-	
+
 	public int getStatus() {
 		return status;
 	}

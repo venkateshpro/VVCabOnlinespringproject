@@ -130,7 +130,7 @@
                     
                 </div>
                 <div class="modal-footer">
-                   <a href="login.html"> <button class="btn btn-success btn-block btnok"  data-dismiss="modal">OK</button></a>
+                   <a href="Login.jsp"> <button class="btn btn-success btn-block btnok"  data-dismiss="modal">OK</button></a>
                 </div>
             </div>
         </div>

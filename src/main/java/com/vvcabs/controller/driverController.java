@@ -3,8 +3,9 @@ package com.vvcabs.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +31,7 @@ public class driverController {
 	@Autowired
 	private bookingService bs;
 	
+	
 	@Autowired
 	private requestservice rs;
 	
@@ -38,17 +40,22 @@ public class driverController {
 	
 	@Autowired
 	private LoginController lc;
+	Logger logger=LoggerFactory.getLogger(LoginController.class);
+
 
 	@GetMapping("/newcab")
 	public ModelAndView newcab() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("Registration_Cab.jsp");
+		logger.info("Cab Raregistraion Form Displyed");
 		return modelAndView;
 	}
 
 	@PostMapping("/adddriverandcab")
 	public ModelAndView addcab(@ModelAttribute cab_Driver c) {
 		System.out.println(c.toString());
+		logger.info("Cab Raregistraion Successfully");
+
 		ds.addcab(c);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("alertsuc.jsp");
@@ -64,30 +71,13 @@ public class driverController {
 
 		mview.addObject("listCab", l);
 		mview.setViewName("list_of_cabs.jsp");
+		logger.info("List Of Cabs Displyed");
+
 		System.out.println(l);
 
 		return mview;
 	}
 	
-	
-//	@RequestMapping("/confirmbooking")
-//	public ModelAndView acceptreq(@ModelAttribute booking bk) {
-//		
-//		int req_id=bk.getReq_id();
-//		cus_id = bk.getCustomer().getUser_Id();
-//		System.out.println(cus_id);
-//		System.out.println(req_id);
-//		rs.deletereq(req_id);
-//		bs.booking(bk);
-//		
-//		
-//		int d_id=lc.dri_id;
-//		//bs.isertbookingId( d_id);
-//		ModelAndView mview = new ModelAndView();
-//		mview.setViewName("bookingcofrim.jsp");
-//		return mview;
-//		
-//	}
 	
 	@RequestMapping("/confirmbooking")
 	public ModelAndView collectprice(@ModelAttribute booking bk) {
@@ -96,7 +86,11 @@ public class driverController {
 		bs.booking(cc.pick,cc.drop,cc.r_id,cc.cus_id,cc.cus_name,price,lc.dri_id);
 		ModelAndView mview = new ModelAndView();
 		mview.setViewName("bookingcofrim.jsp");
+		logger.info("Driver Accepted the user Request");
+
 		rs.deletereq(cc.r_id);
+		logger.info("Delete Query Intaited in Request table");
+
 
 		return mview;
 		
