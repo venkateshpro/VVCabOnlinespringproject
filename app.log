@@ -20,3 +20,4 @@
 2022-10-26 12:24:23 - WARN - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2022-10-26 12:24:24 - INFO - LiveReload server is running on port 35729
 2022-10-26 12:24:24 - INFO - Tomcat started on port(s): 8080 (http) with context path ''
+2022-10-26 12:24:24 - INFO - Started VvCabsOnlineApplication in 5.78 seconds (JVM running for 7.787)
