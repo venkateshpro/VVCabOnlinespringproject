@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.vvcabs.Model.request;
 import com.vvcabs.repo.requestrepo;
+import com.vvcabs.serives.RequestService;
 
 @Service
-public class requestservice {
+public class RequestserviceImpl implements RequestService {
 
 	@Autowired
 	requestrepo reqrepo;

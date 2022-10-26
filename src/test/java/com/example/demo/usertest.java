@@ -22,14 +22,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vvcabs.VvCabsOnlineApplication;
 import com.vvcabs.Model.Customer;
 import com.vvcabs.repo.customerrepo;
-import com.vvcabs.service.customerService;
+import com.vvcabs.service.CustomerServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=VvCabsOnlineApplication.class)
 public class usertest {
 
 	@Autowired
-	customerService cusservice;
+	CustomerServiceImpl cusservice;
 	@MockBean
 	customerrepo cusrepo;
 	@Autowired

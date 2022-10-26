@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.vvcabs.VvCabsOnlineApplication;
 import com.vvcabs.Model.cab_Driver;
 import com.vvcabs.repo.driverrepo;
-import com.vvcabs.service.driverService;
+import com.vvcabs.service.DriverServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=VvCabsOnlineApplication.class)
@@ -25,7 +25,7 @@ public class drivertest {
 	@MockBean
 	driverrepo driverrepo;
 	@Autowired
-	driverService driverservice;
+	DriverServiceImpl driverservice;
 	
 	@Autowired
 	cab_Driver d;

@@ -28,9 +28,9 @@
                         <option value="driver" class="p_select">Driver</option>
                         <option value="admin" class="p_select">Admin</option>
                         </select>
-                    <input class="un " type="text" align="center" placeholder="Username" name="email">
-                    <input class="un" type="password" align="center" placeholder="Password" name="psw">
-                    <input class="button" type="submit" id="login-button" value= "Login" name="Login"  >
+                    <input class="un " type="text" align="center" placeholder="Username" name="email" required>
+                    <input class="un" type="password" align="center" placeholder="Password" name="psw" required>
+                    <input class="button" type="submit" id="login-button" value= "Login" name="Login"  required>
                 </form>
                 
             </div>

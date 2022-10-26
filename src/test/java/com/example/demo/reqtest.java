@@ -19,15 +19,15 @@ import com.vvcabs.Model.Customer;
 import com.vvcabs.Model.cab_Driver;
 import com.vvcabs.Model.request;
 import com.vvcabs.repo.requestrepo;
-import com.vvcabs.service.customerService;
-import com.vvcabs.service.requestservice;
+import com.vvcabs.service.CustomerServiceImpl;
+import com.vvcabs.service.RequestserviceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=VvCabsOnlineApplication.class)
 public class reqtest {
 	
 	@Autowired
-	requestservice reqservice;
+	RequestserviceImpl reqservice;
 	
 	@MockBean
 	requestrepo reqrepo;
@@ -42,7 +42,7 @@ public class reqtest {
 	cab_Driver driver;
 	
 	@Autowired
-	customerService cusservice;
+	CustomerServiceImpl cusservice;
 	
 	@Test
 	public void getrequestTest() {

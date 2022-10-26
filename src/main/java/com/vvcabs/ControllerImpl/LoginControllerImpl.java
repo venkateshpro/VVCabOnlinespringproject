@@ -1,4 +1,4 @@
-package com.vvcabs.controller;
+package com.vvcabs.ControllerImpl;
 
 
 import org.slf4j.Logger;
@@ -16,7 +16,7 @@ import com.vvcabs.repo.driverrepo;
 
 
 @RestController
-public class LoginController {
+public class LoginControllerImpl {
 	
 	int cus_id;
 	
@@ -27,13 +27,14 @@ public class LoginController {
 	@Autowired
 	customerrepo cusr;
 	
+	
 
 
 	
 	@Autowired
 	driverrepo drepo;
 	
-	Logger logger=LoggerFactory.getLogger(LoginController.class);
+	Logger logger=LoggerFactory.getLogger(LoginControllerImpl.class);
 
 	@GetMapping("/")
 	public ModelAndView login() {
@@ -47,7 +48,7 @@ public class LoginController {
 	
 
 	@PostMapping(value = "/validate")
-	public ModelAndView validate_customer(@RequestParam(value = "email", required = false) String email,
+	public ModelAndView validate_customer(@RequestParam(value = "email", required = true) String email,
 			@RequestParam(value = "psw", required = false) String psw,@RequestParam(value = "role", required = false) String role) {
 
 		Customer cus = cusr.findByEmailAndPassword(email, psw);
@@ -85,6 +86,7 @@ public class LoginController {
 					dri_id=d.getD_Id();
 					//int cno=d.getCab_no();
 					//dc.cabnoid(d_Id,cno);
+					
 					
 					modelAndView.setViewName("Driver.jsp");
 					modelAndView.addObject("name", name);

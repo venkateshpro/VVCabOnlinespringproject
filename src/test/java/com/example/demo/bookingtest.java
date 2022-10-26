@@ -19,7 +19,7 @@ import com.vvcabs.Model.Customer;
 import com.vvcabs.Model.booking;
 import com.vvcabs.Model.cab_Driver;
 import com.vvcabs.repo.bookingrepo;
-import com.vvcabs.service.bookingService;
+import com.vvcabs.service.BookingServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=VvCabsOnlineApplication.class)
@@ -28,7 +28,7 @@ public class bookingtest {
 	bookingrepo bookinrepo;
 	
 	@Autowired
-	bookingService bookservice;
+	BookingServiceImpl bookservice;
 	
 	@Autowired
 	booking bookings;

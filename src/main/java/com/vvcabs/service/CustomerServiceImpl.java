@@ -11,9 +11,10 @@ import com.vvcabs.Model.request;
 import com.vvcabs.repo.bookingrepo;
 import com.vvcabs.repo.customerrepo;
 import com.vvcabs.repo.requestrepo;
+import com.vvcabs.serives.CustomerService;
 
 @Service
-public class customerService {
+public class CustomerServiceImpl implements CustomerService{
 	
 	@Autowired
 	customerrepo cusrepo;
@@ -21,6 +22,7 @@ public class customerService {
 	bookingrepo brepo;
 	@Autowired
 	requestrepo reqrepo;
+	
 	
 	public Customer savecustomer(Customer customer) {
 		

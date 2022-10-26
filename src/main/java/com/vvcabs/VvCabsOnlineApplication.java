@@ -10,4 +10,5 @@ public class VvCabsOnlineApplication {
 		SpringApplication.run(VvCabsOnlineApplication.class, args);
 	}
 
+	
 }

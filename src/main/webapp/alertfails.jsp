@@ -109,7 +109,7 @@
             margin: 100px auto;
         }
         .btnok{
-        	width: 40vh;
+        	width: 30vh;
         }
     </style>
 
@@ -128,7 +128,7 @@
                     <p class="text-center">Plz check your Login Credentails..</p>
                 </div>
                 <div class="modal-footer">
-                   <a href="login.html"> <button class="btn btn-danger btn-block btnok"  data-dismiss="modal">OK</button></a>
+                   <a href="Login.jsp"> <button class="btn btn-danger btn-block btnok"  data-dismiss="modal">OK</button></a>
                 </div>
             </div>
         </div>

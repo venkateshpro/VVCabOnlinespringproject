@@ -5,12 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.vvcabs.Model.cab_Driver;
 import com.vvcabs.repo.driverrepo;
+import com.vvcabs.serives.DriverService;
 
 
 
 
 @Service
-public class driverService {
+public class DriverServiceImpl implements  DriverService{
 	
 	@Autowired
 	private driverrepo drepo;

@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.vvcabs.Model.booking;
 import com.vvcabs.repo.bookingrepo;
+import com.vvcabs.serives.BookingService;
 
 @Service
-public class bookingService {
+public class BookingServiceImpl implements BookingService {
 	@Autowired
 	bookingrepo brepo;
 

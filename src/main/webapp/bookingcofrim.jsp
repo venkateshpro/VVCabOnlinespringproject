@@ -109,7 +109,7 @@
             margin: 100px auto;
         }
         .btnok{
-        	width: 40vh;
+        	width: 30vh;
         }
     </style>
 

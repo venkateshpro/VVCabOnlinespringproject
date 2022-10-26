@@ -1,7 +1,5 @@
-package com.vvcabs.controller;
+package com.vvcabs.ControllerImpl;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,38 +11,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vvcabs.Controller.Driver_CabController;
 import com.vvcabs.Model.booking;
 import com.vvcabs.Model.cab_Driver;
-import com.vvcabs.service.bookingService;
-import com.vvcabs.service.driverService;
-import com.vvcabs.service.requestservice;
+import com.vvcabs.service.BookingServiceImpl;
+import com.vvcabs.service.DriverServiceImpl;
+import com.vvcabs.service.RequestserviceImpl;
 
 @RestController
-public class driverController {
+public class Driver_CabControllerImpl  implements Driver_CabController{
 	
 	int  price;
 	
 
 	@Autowired
-	private driverService ds;
+	private DriverServiceImpl ds;
 	
 	@Autowired
-	private bookingService bs;
+	private BookingServiceImpl bs;
 	
 	
 	@Autowired
-	private requestservice rs;
+	private RequestserviceImpl rs;
 	
 	@Autowired
-	CustomerController cc;
+	CustomerControllerImpl cc;
 	
 	@Autowired
-	private LoginController lc;
-	Logger logger=LoggerFactory.getLogger(LoginController.class);
+	private LoginControllerImpl lc;
+	Logger logger=LoggerFactory.getLogger(LoginControllerImpl.class);
 
 
 	@GetMapping("/newcab")
-	public ModelAndView newcab() {
+	public ModelAndView newcabform() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("Registration_Cab.jsp");
 		logger.info("Cab Raregistraion Form Displyed");
@@ -52,11 +51,9 @@ public class driverController {
 	}
 
 	@PostMapping("/adddriverandcab")
-	public ModelAndView addcab(@ModelAttribute cab_Driver c) {
-		System.out.println(c.toString());
+	public ModelAndView addcab(@ModelAttribute cab_Driver driver) {
 		logger.info("Cab Raregistraion Successfully");
-
-		ds.addcab(c);
+		ds.addcab(driver);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("alertsuc.jsp");
 		return modelAndView;
@@ -64,17 +61,10 @@ public class driverController {
 
 	@GetMapping("/listofdriver")
 	public ModelAndView findlistofdriver() {
-
 		ModelAndView mview = new ModelAndView();
-		List<cab_Driver> l = new ArrayList<>();
-		l.addAll(ds.get_driverlist());
-
-		mview.addObject("listCab", l);
+		mview.addObject("listCab", ds.get_driverlist());
 		mview.setViewName("list_of_cabs.jsp");
 		logger.info("List Of Cabs Displyed");
-
-		System.out.println(l);
-
 		return mview;
 	}
 	
@@ -82,20 +72,18 @@ public class driverController {
 	@RequestMapping("/confirmbooking")
 	public ModelAndView collectprice(@ModelAttribute booking bk) {
 		price =bk.getPrice();
-		System.out.println(cc.r_id);
 		bs.booking(cc.pick,cc.drop,cc.r_id,cc.cus_id,cc.cus_name,price,lc.dri_id);
 		ModelAndView mview = new ModelAndView();
 		mview.setViewName("bookingcofrim.jsp");
 		logger.info("Driver Accepted the user Request");
-
 		rs.deletereq(cc.r_id);
 		logger.info("Delete Query Intaited in Request table");
-
-
 		return mview;
 		
 		
 	}
+
+	
 	
 	
 	
