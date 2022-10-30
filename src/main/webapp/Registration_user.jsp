@@ -24,7 +24,7 @@
         <h1 class="form-name">   Customer Registration Form</h1>
         <div class="details-card ">
             <div class="card  ">
-                <form action="customercontroller/adduser" method="post">
+                <form action="/adduser" method="post">
                     <div class="container">
 
                         

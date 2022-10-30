@@ -1,11 +1,14 @@
-package com.example.demo;
+package com.vvcabs.test.request;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -14,20 +17,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+
 import com.vvcabs.VvCabsOnlineApplication;
 import com.vvcabs.Model.Customer;
 import com.vvcabs.Model.cab_Driver;
 import com.vvcabs.Model.request;
 import com.vvcabs.repo.requestrepo;
-import com.vvcabs.service.CustomerServiceImpl;
-import com.vvcabs.service.RequestserviceImpl;
+import com.vvcabs.serives.CustomerService;
+import com.vvcabs.serives.RequestService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=VvCabsOnlineApplication.class)
 public class reqtest {
 	
 	@Autowired
-	RequestserviceImpl reqservice;
+	RequestService reqservice;
 	
 	@MockBean
 	requestrepo reqrepo;
@@ -42,7 +46,7 @@ public class reqtest {
 	cab_Driver driver;
 	
 	@Autowired
-	CustomerServiceImpl cusservice;
+	CustomerService cusservice;
 	
 	@Test
 	public void getrequestTest() {
@@ -91,8 +95,17 @@ public class reqtest {
 	
 	
 	
-	
-	
+	 @Test
+	    void delete() {
+	       
+
+	        when(reqrepo.findById(1)).thenReturn(Optional.of(req));
+
+	        reqservice.deletereq(1);
+
+	        verify(reqrepo).deleteById(1);
+
+	    }
 	
 	
 	

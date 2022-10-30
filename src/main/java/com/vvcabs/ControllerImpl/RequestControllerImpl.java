@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.vvcabs.Controller.RequestController;
-import com.vvcabs.service.RequestserviceImpl;
+import com.vvcabs.serviceImpl.RequestserviceImpl;
 
 @RestController
 public class RequestControllerImpl implements RequestController{
@@ -18,11 +18,11 @@ public class RequestControllerImpl implements RequestController{
 	RequestserviceImpl reqs;
 	
 	Logger logger=LoggerFactory.getLogger(LoginControllerImpl.class);
+	ModelAndView mview = new ModelAndView();
 
 
 	@GetMapping("/listrequest")
 	public ModelAndView showlistcus() {
-		ModelAndView mview = new ModelAndView();
 		mview.addObject("list", reqs.listof_request());
 		mview.setViewName("list_of_req.jsp");
 		logger.info("List Of Request by Users");

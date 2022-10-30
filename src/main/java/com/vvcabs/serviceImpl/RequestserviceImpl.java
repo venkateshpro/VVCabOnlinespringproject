@@ -1,4 +1,4 @@
-package com.vvcabs.service;
+package com.vvcabs.serviceImpl;
 
 import java.util.List;
 

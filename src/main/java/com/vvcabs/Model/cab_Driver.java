@@ -42,7 +42,6 @@ public class cab_Driver {
 
 	public cab_Driver() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public cab_Driver(int d_Id, String email, String psw, String driver_name, int cab_no, int cab_type,

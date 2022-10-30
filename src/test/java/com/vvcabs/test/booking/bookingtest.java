@@ -1,14 +1,17 @@
-package com.example.demo;
+package com.vvcabs.test.booking;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -19,7 +22,8 @@ import com.vvcabs.Model.Customer;
 import com.vvcabs.Model.booking;
 import com.vvcabs.Model.cab_Driver;
 import com.vvcabs.repo.bookingrepo;
-import com.vvcabs.service.BookingServiceImpl;
+import com.vvcabs.serives.BookingService;
+import com.vvcabs.serives.CustomerService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=VvCabsOnlineApplication.class)
@@ -27,8 +31,13 @@ public class bookingtest {
 	@MockBean
 	bookingrepo bookinrepo;
 	
+	@Mock
+	bookingrepo bookinrepo1;
+	
+	
+	
 	@Autowired
-	BookingServiceImpl bookservice;
+	BookingService bookservice;
 	
 	@Autowired
 	booking bookings;
@@ -36,6 +45,8 @@ public class bookingtest {
 	Customer customer;
 	@Autowired
 	cab_Driver driver;
+	@Autowired
+	CustomerService cusservice;
 
 	@Test
 	public void getbookingTest() {
@@ -94,6 +105,13 @@ public class bookingtest {
 	
 	
 	
+	@Test
+	public void findById(){
+		booking b=new booking(1,1,customer,driver,"vvv","knl","drop",220);
+		 Mockito.when(bookinrepo1.findById(1)).thenReturn(Optional.of(b));
+
+
+	}
 	
 
 }

@@ -50,7 +50,6 @@ public class booking {
 
 	public booking() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 

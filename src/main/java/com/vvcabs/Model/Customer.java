@@ -44,7 +44,6 @@ public class Customer {
 
 		
 		public Customer() {
-			// TODO Auto-generated constructor stub
 		}
 		public Customer(int user_Id, String user_email, String user_psw, String user_phone, String user_name) {
 			super();
@@ -84,5 +83,6 @@ public class Customer {
 		public void setUser_name(String user_name) {
 			this.user_name = user_name;
 		}
+	
 	
 }
