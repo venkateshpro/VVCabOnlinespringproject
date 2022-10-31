@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,7 +41,7 @@ public class CustomerControllerImpl implements CustomerController{
 	private LoginControllerImpl lc;
 	ModelAndView modelAndView = new ModelAndView();
 
-
+	
 	@GetMapping("/newuser")
 	public ModelAndView userform() {
 		modelAndView.setViewName("Registration_user.jsp");
@@ -48,7 +50,8 @@ public class CustomerControllerImpl implements CustomerController{
 		
 		return modelAndView;
 	} 
-
+	
+	
 	@PostMapping("/adduser")
 	public ModelAndView addCustomer(@ModelAttribute Customer customer) {
 		ModelAndView mview = new ModelAndView();
@@ -60,17 +63,16 @@ public class CustomerControllerImpl implements CustomerController{
 		return mview;
 	}
 
-	
-
 	@GetMapping("/listcus")
 	public ModelAndView showlistcustomers() {
 		modelAndView.addObject("listUsers", cusservice.get_customer());
-		modelAndView.setViewName("list_of_u.jsp");
+		modelAndView.setViewName("CustomersList.jsp");
 		logger.info("List of Customers Has displyed ");
-		//new Responses("record counts : "+cusservice.get_customer().size(),Boolean.TRUE);
 		return modelAndView;
 
 	}
+	
+	
 
 	@PostMapping("/requestcab") // this method collecting directios
 	public ModelAndView requestCab(@ModelAttribute request req) {
@@ -93,6 +95,17 @@ public class CustomerControllerImpl implements CustomerController{
 		return null;
 		
 
+	}
+	
+	
+	@RequestMapping("/deletecustomer")
+	public ModelAndView deleteCustomer(@RequestParam (value="id") int id ) {
+		cusservice.deleteCustomer(id);
+		
+		modelAndView.addObject("listUsers", cusservice.get_customer());
+		modelAndView.setViewName("CustomersList.jsp");
+	
+		return modelAndView;
 	}
 
 	@GetMapping("/recentbooking")

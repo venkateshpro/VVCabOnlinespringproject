@@ -13,6 +13,10 @@ import org.springframework.stereotype.Repository;
 
 import com.vvcabs.Model.booking;
 
+/**
+*
+* @author Naga Venkatesh
+*/
 @Repository
 public interface bookingrepo extends JpaRepository<booking, Integer>{
 	

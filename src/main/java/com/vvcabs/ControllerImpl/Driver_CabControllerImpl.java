@@ -2,12 +2,14 @@ package com.vvcabs.ControllerImpl;
 
 
 import org.slf4j.Logger;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,6 +20,11 @@ import com.vvcabs.serviceImpl.BookingServiceImpl;
 import com.vvcabs.serviceImpl.DriverServiceImpl;
 import com.vvcabs.serviceImpl.RequestserviceImpl;
 
+
+/**
+*
+* @author Naga Venkatesh
+*/
 @RestController
 public class Driver_CabControllerImpl  implements Driver_CabController{
 	
@@ -25,7 +32,7 @@ public class Driver_CabControllerImpl  implements Driver_CabController{
 	
 
 	@Autowired
-	private DriverServiceImpl ds;
+	private DriverServiceImpl driversevice;
 	
 	@Autowired
 	private BookingServiceImpl bs;
@@ -50,18 +57,19 @@ public class Driver_CabControllerImpl  implements Driver_CabController{
 		logger.info("Cab Raregistraion Form Displyed");
 		return mview;
 	}
-
+	
 	@PostMapping("/adddriverandcab")
 	public ModelAndView addcab(@ModelAttribute cab_Driver driver) {
 		logger.info("Cab Raregistraion Successfully");
-		ds.addcab(driver);
-		mview.setViewName("alertsuc.jsp");
+		driversevice.addcab(driver);
+		mview.setViewName("alertsucess.jsp");
 		return mview;
 	}
-
+	
+	
 	@GetMapping("/listofdriver")
 	public ModelAndView findlistofdriver() {
-		mview.addObject("listCab", ds.get_driverlist());
+		mview.addObject("listCab", driversevice.get_driverlist());
 		mview.setViewName("list_of_cabs.jsp");
 		logger.info("List Of Cabs Displyed");
 		return mview;
@@ -79,6 +87,18 @@ public class Driver_CabControllerImpl  implements Driver_CabController{
 		return mview;
 		
 		
+		
+	}
+	
+	
+	@RequestMapping("/deletecabdriver")
+	public ModelAndView deleteCabdriver(@RequestParam (value="id") int id ) {
+		driversevice.deleteCabdriver(id);
+		
+		mview.addObject("listCab", driversevice.get_driverlist());
+		mview.setViewName("list_of_cabs.jsp");
+	
+		return mview;
 	}
 
 	

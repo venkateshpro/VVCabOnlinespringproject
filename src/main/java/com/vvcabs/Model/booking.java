@@ -12,6 +12,10 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
+/**
+*
+* @author Naga Venkatesh
+*/
 @Entity
 @Component
 public class booking {

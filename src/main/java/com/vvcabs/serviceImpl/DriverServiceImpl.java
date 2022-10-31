@@ -32,4 +32,8 @@ public class DriverServiceImpl implements  DriverService{
 		return drepo.findById(Id).orElse(null);
 	}
 
+	public void deleteCabdriver(int id) {
+		drepo.deleteById(id);
+	}
+
 }

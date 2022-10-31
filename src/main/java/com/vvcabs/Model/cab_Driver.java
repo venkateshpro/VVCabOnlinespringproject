@@ -13,6 +13,11 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+
+/**
+*
+* @author Naga Venkatesh
+*/
 @Entity
 @Table
 @Component

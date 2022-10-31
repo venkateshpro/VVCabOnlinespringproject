@@ -2,10 +2,15 @@ package com.vvcabs.repo;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
 import com.vvcabs.Model.Customer;
+
+/**
+*
+* @author Naga Venkatesh
+*/
 @Repository
 public interface customerrepo  extends JpaRepository <Customer,Integer> {
 	

@@ -3,6 +3,9 @@ package com.vvcabs.test.booking;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -13,9 +16,11 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 
 import com.vvcabs.VvCabsOnlineApplication;
 import com.vvcabs.Model.Customer;
@@ -27,6 +32,7 @@ import com.vvcabs.serives.CustomerService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=VvCabsOnlineApplication.class)
+@AutoConfigureMockMvc
 public class bookingtest {
 	@MockBean
 	bookingrepo bookinrepo;
@@ -47,6 +53,9 @@ public class bookingtest {
 	cab_Driver driver;
 	@Autowired
 	CustomerService cusservice;
+	
+	@Autowired
+	private MockMvc mockmvc;
 
 	@Test
 	public void getbookingTest() {
@@ -112,6 +121,10 @@ public class bookingtest {
 
 
 	}
+	@Test
+    public void listofBookingsTest() throws Exception {
+		mockmvc.perform(get("/bookinglist")).andExpect(status().isOk()).andExpect(view().name("list_of_booking.jsp")).andReturn();
+    }
 	
 
 }

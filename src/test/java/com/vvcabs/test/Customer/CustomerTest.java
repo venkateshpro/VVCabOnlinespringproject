@@ -46,15 +46,9 @@ public class CustomerTest {
 	
 	
 		
-	@Autowired
-	private WebApplicationContext context;
+
 	
-	ObjectMapper om = new ObjectMapper();
-	
-//	@Before
-//	public void setUp() {
-//		mockmvc = MockMvcBuilders.webAppContextSetup(context).build();
-//	}
+
 	
 	@Test
 	public void saveUserTest() {
@@ -80,21 +74,19 @@ public class CustomerTest {
 
 	@Test
     public void listofCustomersTest() throws Exception {
-		mockmvc.perform(get("/listcus")).andExpect(status().isOk()).andExpect(view().name("list_of_u.jsp")).andReturn();
+		mockmvc.perform(get("/listcus")).andExpect(status().isOk()).andExpect(view().name("CustomersList.jsp")).andReturn();
     }
 	@Test
     public void registrationpageTest() throws Exception {
 		mockmvc.perform(get("/newuser")).andExpect(status().isOk()).andExpect(view().name("Registration_user.jsp")).andReturn();
     }
 	
-	@Test
-    public void AddCustomerTest() throws Exception {
-		mockmvc.perform(get("/adduser")).andExpect(status().is(405)).andExpect(view().name("alertsuc.jsp")).andReturn();
-    }
-	@Test
-    public void RequestTest() throws Exception {
-		mockmvc.perform(get("/requestcab")).andExpect(status().is(405)).andExpect(view().name("reqestsuccess.jsp")).andReturn();
-    }
+//	@Test
+//    public void AddCustomerTest() throws Exception {
+//		mockmvc.perform(get("/adduser")).andExpect(status().is(405)).andExpect(view().name("alertsucess.jsp")).andReturn();
+//    }
+	
+
 	
 	@Test
     public void RecentbookingTest() throws Exception {

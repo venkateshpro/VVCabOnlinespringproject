@@ -1,0 +1,11 @@
+com.vvcabs
+com.vvcabs.Controller
+com.vvcabs.ControllerImpl
+com.vvcabs.Model
+com.vvcabs.repo
+com.vvcabs.serives
+com.vvcabs.serviceImpl
+com.vvcabs.test.booking
+com.vvcabs.test.Customer
+com.vvcabs.test.Drivercab
+com.vvcabs.test.request

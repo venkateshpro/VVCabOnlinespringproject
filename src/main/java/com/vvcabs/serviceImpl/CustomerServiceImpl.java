@@ -52,6 +52,12 @@ public class CustomerServiceImpl implements CustomerService{
 		
 	}
 
+	public void deleteCustomer(int id) {
+		
+		cusrepo.deleteById(id);
+		
+	}
+
 
 	
 	

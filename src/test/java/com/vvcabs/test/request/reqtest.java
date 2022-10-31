@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -13,10 +16,11 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
-
+import org.springframework.test.web.servlet.MockMvc;
 
 import com.vvcabs.VvCabsOnlineApplication;
 import com.vvcabs.Model.Customer;
@@ -28,6 +32,7 @@ import com.vvcabs.serives.RequestService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=VvCabsOnlineApplication.class)
+@AutoConfigureMockMvc
 public class reqtest {
 	
 	@Autowired
@@ -44,6 +49,9 @@ public class reqtest {
 	Customer cusomer;
 	@Autowired
 	cab_Driver driver;
+	
+	@Autowired
+	private MockMvc mockmvc;
 	
 	@Autowired
 	CustomerService cusservice;
@@ -93,7 +101,10 @@ public class reqtest {
         assertTrue(req.getStatus() == 0);
     }
 	
-	
+	@Test
+    public void ListofrequestTest() throws Exception {
+		mockmvc.perform(get("/listrequest")).andExpect(status().isOk()).andExpect(view().name("list_of_req.jsp")).andReturn();
+    }
 	
 	 @Test
 	    void delete() {

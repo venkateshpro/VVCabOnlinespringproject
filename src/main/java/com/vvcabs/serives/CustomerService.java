@@ -5,7 +5,10 @@ import java.util.List;
 import com.vvcabs.Model.Customer;
 import com.vvcabs.Model.booking;
 import com.vvcabs.Model.request;
-
+/**
+*
+* @author Naga Venkatesh
+*/
 public interface CustomerService {
 	
 	public Customer savecustomer(Customer customer);

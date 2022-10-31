@@ -103,18 +103,12 @@ public class CabDriverTest {
     public void NewCabformTest() throws Exception {
 		mockmvc.perform(get("/newcab")).andExpect(status().isOk()).andExpect(view().name("Registration_Cab.jsp")).andReturn();
     }
-	@Test
-    public void AddingCabTest() throws Exception {
-		mockmvc.perform(get("/adddriverandcab")).andExpect(status().isOk()).andExpect(view().name("alertsuc.jsp")).andReturn();
-    }
+
 	@Test
     public void ListofCabsTest() throws Exception {
 		mockmvc.perform(get("/listofdriver")).andExpect(status().isOk()).andExpect(view().name("list_of_cabs.jsp")).andReturn();
     }
-	@Test
-    public void ConfrimbookingTest() throws Exception {
-		mockmvc.perform(get("/confirmbooking")).andExpect(status().isOk()).andExpect(view().name("bookingcofrim.jsp")).andReturn();
-    }
+	
 	
 	
 	

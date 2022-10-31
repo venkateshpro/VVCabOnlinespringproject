@@ -14,7 +14,10 @@ import com.vvcabs.Model.cab_Driver;
 import com.vvcabs.repo.customerrepo;
 import com.vvcabs.repo.driverrepo;
 
-
+/**
+*
+* @author Naga Venkatesh
+*/
 @RestController
 public class LoginControllerImpl {
 	
@@ -37,6 +40,11 @@ public class LoginControllerImpl {
 	Logger logger=LoggerFactory.getLogger(LoginControllerImpl.class);
 	ModelAndView modelAndView = new ModelAndView();
 
+	/**
+	    * Using Model and View
+	    * for giving the output.
+	    * @return  Return the loginPage
+	    */
 
 	@GetMapping("/")
 	public ModelAndView login() {
@@ -46,7 +54,11 @@ public class LoginControllerImpl {
 		return modelAndView;
 	}
 
-	
+	/**
+	    * Using Model and View
+	    * for giving the output.
+	    * @return  It validate the Credetails
+	    */
 
 	@PostMapping(value = "/validate")
 	public ModelAndView validate(@RequestParam(value = "email", required = true) String email,
@@ -77,7 +89,7 @@ public class LoginControllerImpl {
 				else { 
 					ModelAndView modelAndView = new ModelAndView("alertfails.jsp");
 					logger.error("You Entered Wrong Credentails Please Check");
-					//modelAndView.setViewName("alertfails.html");
+					modelAndView.setViewName("alertfails.html");
 					return modelAndView
 ;
 				}	
@@ -108,6 +120,7 @@ public class LoginControllerImpl {
 				else {
 					logger.error("You Entered Wrong Credentails Please Check");
 					modelAndView.setViewName("alertfails.jsp");
+					return modelAndView;
 				}
 			}
 			return null;

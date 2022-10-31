@@ -6,7 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import com.vvcabs.Model.cab_Driver;
 
-
+/**
+*
+* @author Naga Venkatesh
+*/
 @Repository
 public interface driverrepo extends JpaRepository <cab_Driver,Integer> {
 	public static final String email_psw = "select * from cab_driver d where d.email=?1 and d.psw=?2";

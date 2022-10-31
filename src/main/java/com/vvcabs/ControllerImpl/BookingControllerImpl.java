@@ -9,6 +9,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.vvcabs.Controller.BookingController;
 import com.vvcabs.serviceImpl.BookingServiceImpl;
 
+
+/**
+*
+* @author Naga Venkatesh
+*/
 @Controller
 public class BookingControllerImpl implements BookingController{
 	
@@ -16,8 +21,9 @@ public class BookingControllerImpl implements BookingController{
 	BookingServiceImpl bs;
 	
 	Logger logger=LoggerFactory.getLogger(BookingControllerImpl.class);
-	ModelAndView mview = new ModelAndView();		
-
+	ModelAndView mview = new ModelAndView();	
+	
+	
 	@GetMapping("/bookinglist")
 	public ModelAndView recentbooking() {
 		mview.addObject("booking", bs.bookinglist());

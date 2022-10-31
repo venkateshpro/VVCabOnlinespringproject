@@ -127,7 +127,7 @@
                     <p class="text-center">Your Registration has been Successfull..</p>
                 </div>
                 <div class="modal-footer">
-                   <a href="Login.jsp"> <button class="btn btn-success btn-block btnok"  data-dismiss="modal">OK</button></a>
+                   <a href="Admin.jsp"> <button class="btn btn-success btn-block btnok"  data-dismiss="modal">OK</button></a>
                 </div>
             </div>
         </div>

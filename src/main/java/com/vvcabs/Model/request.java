@@ -10,7 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import org.springframework.stereotype.Component;
 
-
+/**
+*
+* @author Naga Venkatesh
+*/
 @Entity
 @Component
 public class request {

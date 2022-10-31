@@ -30,6 +30,13 @@
   background-color: #ff8000;
   color: white;
 }
+.icons{
+	width: 50px;
+}
+.deletebutton{
+	border: none;
+	background-color: transparent;
+}
 </style>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -38,6 +45,8 @@
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark justify-content-between">
         <img src=" https://res.cloudinary.com/dkzionr3v/image/upload/v1643985271/v_logo_png_ezwvk6.png"  class="navbar-image "/>
         <a href="Admin.jsp"><button class="btn btn-warning m-2">Back</button></a>
+            <script src="https://kit.fontawesome.com/a61bc0f677.js" crossorigin="anonymous"></script>  
+        
     </nav>
 <h1>Availble Cabs </h1>
 
@@ -51,6 +60,8 @@
     <th>Cab Type</th>
     <th>Driver Phone</th>
     <th>Driver Name</th>
+        <th>Admin Operations</th>
+    
     
     
   </tr>
@@ -63,8 +74,14 @@
 	           <td>${c.driver_name}</td>
 	           <td>${c.cab_no}</td>
 	           <td>${c.cab_type}</td>
-	           <td>${c.driver_phonenum}</td>	                      	                        <td>${c.cab_no}</td>
-	                          
+	           <td>${c.driver_phonenum}</td>
+	           <td>${c.cab_no}</td>
+	           <td>
+	           <form action="/deletecabdriver">
+	                <input type="hidden" value="${c.d_Id}" name="id">
+	                <button class="deletebutton" type="submit"><i class=" fa-solid fa-trash fa-xl m-4"></i></button>
+	            </form>
+	           </td>
 	          </tr>
 	  </c:forEach>
   </tbody>
