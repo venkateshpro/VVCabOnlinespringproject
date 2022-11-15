@@ -80,12 +80,11 @@ public class CustomerTest {
     public void registrationpageTest() throws Exception {
 		mockmvc.perform(get("/newuser")).andExpect(status().isOk()).andExpect(view().name("Registration_user.jsp")).andReturn();
     }
-	
 //	@Test
 //    public void AddCustomerTest() throws Exception {
-//		mockmvc.perform(get("/adduser")).andExpect(status().is(405)).andExpect(view().name("alertsucess.jsp")).andReturn();
-//    }
-	
+//		mockmvc.perform(get("/adduser")).andExpect(status().is(405)).andExpect(view().name("alerts.html")).andReturn();
+//   }
+//	
 
 	
 	@Test

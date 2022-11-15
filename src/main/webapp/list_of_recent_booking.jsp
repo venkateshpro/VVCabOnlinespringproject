@@ -50,7 +50,8 @@
     <th>price</th>
     <th>req_id</th>
     <th>customer id</th>
-    <th>Driver id</th>
+    <th>Driver Name</th>
+    <th>Driver Phone</th>
     
   </tr>
   
@@ -63,8 +64,8 @@
 				<td>${r.price}</td>
 				<td>${r.r_Id}</td>
 				<td>${r.customer.user_Id}</td>
-				<td>${r.driver.d_Id}</td>
-
+				<td>${r.driver.driver_name}</td>
+				<td>${r.driver.driver_phonenum}
 				
 
 		</c:forEach>

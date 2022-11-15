@@ -107,7 +107,6 @@
 									</form>
 								</div>
 							</div>
-						</div> <a href=""><button class="btn btn-danger ml-2">Reject</button></a>
 
 					</td>
 
